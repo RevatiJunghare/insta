@@ -8,7 +8,8 @@ export class JwtAuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const request: Request = context.switchToHttp().getRequest();
     const token = request.headers['authorization'];
-    console.log("request", token);
+    // console.log("request", token);
+    // console.log("request body in guard",request.body)
 
     if (!token) {
       return false; 
@@ -17,7 +18,7 @@ export class JwtAuthGuard implements CanActivate {
     try {
       // Synchronously verify the token
       const payload = jwt.verify(token, 'instauser');
-      console.log("Decoded payload:", payload); 
+      // console.log("Decoded payload:", payload); 
 
       // Attach user to the request object
       request['user'] = payload; 

@@ -37,6 +37,6 @@ export class PostEntity{
     user: AuthEntity;  // Association with AuthEntity
     
     @Column({ nullable: true })
-    username: string;  // Remove this if unnecessary, or leave it for storing username string
+    username?: string;  // Remove this if unnecessary, or leave it for storing username string
 
 }

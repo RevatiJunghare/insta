@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString } from "class-validator"
+import { IsEmpty, IsNotEmpty, IsString } from "class-validator"
 
 export class postdto{
     @IsNotEmpty()
@@ -16,7 +16,6 @@ export class postdto{
     @IsNotEmpty()
     media: string; // This column will store file URLs or paths
 
-    
-    @IsString()
-    username?:string
+
+
 }
