@@ -26,8 +26,32 @@ export class CommentService{
             select:["blog_id","comment_count"]
         })
 
-        comment['post'] = postss
+        const temp = postss.map(post => {
+            return post.blog_id;
+          });
+        comment['comment_blog_id'] = temp[0]
 
+        comment['post'] = postss
        return this.commentRepository.save(comment)
+    }
+
+    async AllComents(id:any){
+        const numID = Number(id['id'])
+    
+        const exists =  await this.postrepository.findOne({
+            where:{
+                blog_id: numID
+            }
+        })
+
+        if(exists){
+            const ALLcomments = this.commentRepository.find({
+               where:{
+                comment_blog_id:numID
+               }
+            })
+            return ALLcomments
+        }
+
     }
 }

@@ -13,6 +13,9 @@ export class commentsEntity{
     @Column({nullable:true})
     ParentId:number
 
+    @Column({nullable:true})
+    comment_blog_id:number
+
     @CreateDateColumn()
     createdAT:Date
 
